@@ -1,0 +1,162 @@
+*{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+#WebsiteInformation{
+    padding-top: 5px;
+    padding-bottom: 20px;
+    color: white;
+    background-color: brown;
+    margin-bottom: 20px;
+}
+
+#WebsiteInformation>*{
+    margin-left: 20px;
+}
+#Chunk{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    background-color: #333;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    border-color: black;
+    border-style: solid;
+    border-width: 6px;
+}
+#Chunk>*{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    color: white;
+}
+
+#SubChunk{
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+#GameButtons {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: -20px;
+    text-align: center;
+}
+
+#GameButtons > * {
+    display: block;
+}
+
+#Back{
+    width: 47px;
+}
+#Restart>img{
+    width: 100%;
+    height: 100%;
+}
+
+
+#Game > p{
+    margin-top: 0px;
+    font-size: .90em;
+}
+
+#PlayerOneText, #PlayerTwoText{
+    color: white;
+    background-color: brown;
+    text-align: center;
+    width: 180px;
+    height: 50px;
+    margin: auto;
+    margin-top: 30px;
+    padding-top: 7px;
+    border-style: solid;
+    border-width: 6px;
+}
+
+#Board{
+    background-color: brown;
+    height: 500px;
+    width: 500px;
+    margin: 30px auto;
+}
+
+#WinPopup{
+    visibility: hidden;
+    height: 125px;
+    width: 275px;
+    z-index: 100;
+    position: absolute;
+    text-align: center;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: brown;
+}
+
+#WinPopup h1{
+    margin-bottom: 15px;
+    color: white;
+}
+
+#WinPopup button{
+    margin-bottom: 15px;
+}
+
+#Guide{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 700px;
+    height: auto;
+    margin-top: 50px;
+    background-color: #333;
+    border-style: solid;
+    border-width: 6px;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+#Guide > *{
+    color: white;
+}
+
+#Gameplay{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#TileColor{
+    text-align: center;
+    width: 30px;
+    height: 30px;
+}
+
+#Issues{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#Images{
+    text-align: center;
+}
+
+#TileImages{
+    margin-left: 10px;
+}
+
+img{
+    image-rendering: pixelated;
+}
+
+body{
+    margin: 0;
+}
