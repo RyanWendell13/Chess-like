@@ -78,13 +78,13 @@ let ChangeTurn = () => {
     if(whiteTurn == false){
         whiteTurn = true
         playerOneText.style.borderColor = 'black'
-        playerTwoText.style.borderColor = 'white'
+        playerTwoText.style.borderColor = 'transparent'
         currentEnemyPieces = blackPieces
         currentTeamPieces = whitePieces
     }
     else{
         whiteTurn = false
-        playerOneText.style.borderColor = 'white'
+        playerOneText.style.borderColor = 'transparent'
         playerTwoText.style.borderColor = 'black'
         currentEnemyPieces = whitePieces
         currentTeamPieces = blackPieces

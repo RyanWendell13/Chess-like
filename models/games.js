@@ -50,7 +50,7 @@ let games = [{
 },{
     index: 2,
     name: 'Tablut',
-    subtitle: 'Chess When Your Far From The Equator',
+    subtitle: 'Chess When Your Far From The Equator, Best Documented Tafl Game',
     
     instructions: [`All pieces move like Rooks. They can move horizontally and vertically as long as they are unobstructed.`,
     `Player one plays as the attackers, and goes first. Their goal is to capture the King. Who starts in the center of the board. In the castle`,
@@ -58,7 +58,6 @@ let games = [{
     `All pieces can be captured by placing to opposing pieces on each side of the piece forming a line. There are a few exceptions to this rule.`,
     `Exception one: If the Branán is in the castle he must be totally surrounded to be captured.`,
     `Exception two: If the Branán is outside, but adjacent to the castle he must be surrounded on three sides.`,
-    `Exception three: If the king is in the castle and a defender is occupying an adjacent side, he can be captured against the castle. The castle acts like and allied piece.`,
     `No pieces can enter the castle. If the King leaves the castle he cannot re-enter`],
 
     pieces: [{name:'Pawn',images:['/images/Pawn.png']},
@@ -72,7 +71,7 @@ let games = [{
 },{
     index: 3,
     name: 'Brandubh',
-    subtitle: 'Chess But Irish',
+    subtitle: 'Chess But Irish, Also It Is Quicker Then Other Tafl Varients',
     
     instructions: [`All pieces move like Rooks. They can move horizontally and vertically as long as they are unobstructed.`,
         `Player one plays as the attackers, and goes first. Their goal is to capture the Branán. Who starts in the center of the board.`,
@@ -80,7 +79,7 @@ let games = [{
         `All pieces can be captured by placing to opposing pieces on each side of the piece forming a line. There are a few exceptions to this rule.`,
         `Exception one: If the Branán is in the castle he must be totally surrounded to be captured.`,
         `Exception two: If the Branán is outside, but adjacent to the castle he must be surrounded on three sides.`,
-        `Exception three: If the king is in the castle and a defender is occupying an adjacent side, he can be captured against the castle. The castle acts like and allied piece.`],
+        `No pieces can enter the castle. If the King leaves the castle he cannot re-enter`],
 
     pieces: [{name:'Pawn',images:['/images/Pawn.png']},
         {name:'Branán',images:['/images/Branán.png']}],
@@ -90,7 +89,30 @@ let games = [{
     issues: [],
 
     script: '/js/special/Brandubh.js'
+},{
+    index: 4,
+    name: 'Tawlbwrdd',
+    subtitle: 'Chess But With A Crazy Welsh Name And Too Many Pieces',
+    
+    instructions: [`All pieces move like Rooks. They can move horizontally and vertically as long as they are unobstructed.`,
+        `Player one plays as the attackers, and goes first. Their goal is to capture the Branán. Who starts in the center of the board.`,
+        `Player two plays as the defenders. Their goal is to escape by reaching any tile on the edge of the board.`,
+        `All pieces can be captured by placing to opposing pieces on each side of the piece forming a line. There are a few exceptions to this rule.`,
+        `Exception one: If the Branán is in the castle he must be totally surrounded to be captured.`,
+        `Exception two: If the Branán is outside, but adjacent to the castle he must be surrounded on three sides.`,
+        `No pieces can enter the castle. If the King leaves the castle he cannot re-enter`],
+
+    pieces: [{name:'Pawn',images:['/images/Pawn.png']},
+        {name:'King',images:['/images/King.png']}],
+
+    tiles: [{name:'Possible Move',color:'Yellow'},{name:'Castle',color:'Red'}],
+
+    issues: [],
+
+    script: '/js/special/Tawlbwrdd.js'
+
 }]
+
 
 
 exports.games = games;

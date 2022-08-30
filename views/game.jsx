@@ -4,31 +4,33 @@ const React = require('react')
 function game (data) {
     let gameSetup = data => {
         return(
-            <div>
+            <>
                 <div  id='GameButtons'>
-                    <a href='/'>
-                        <button>back</button>
-                    </a>
-                    <button id="Restart" onclick="NewGame()">
-                        <img src="/images/ReloadIcon.png" alt="Restart Button"/>
-                    </button>
+                        <a href='/'>
+                            <button id='Back'>back</button>
+                        </a>
+                        <button id="Restart" onclick="NewGame()">
+                            <img src="/images/ReloadIcon.png" alt="Restart Button"/>
+                        </button>
                 </div>
+                    
+                <div>
+                    <h1 id="PlayerTwoText">Player Two</h1>
 
-                <h1 id="PlayerTwoText">Player Two</h1>
-
-                <div id="Board">
-                    <div id="WinPopup">
-                        <h1 id="WinText">Player One Won</h1>
-                        <button id = 'NewGameButton'onclick="NewGame()">New Game</button>
+                    <div id="Board">
+                        <div id="WinPopup">
+                            <h1 id="WinText">Player One Won</h1>
+                            <button id = 'NewGameButton'onclick="NewGame()">New Game</button>
+                        </div>
                     </div>
+                    <h1 id="PlayerOneText">Player One</h1>
                 </div>
-
-                <h1 id="PlayerOneText">Player One</h1>
+                    
 
 
                 <div id="Guide">
-                <h1>Guide</h1>
-                    <div id="Gameplay">
+                    <h1>Guide</h1>
+                    <div id="Instructions">
                         {data.instructions.map(i => {
                             return(
                                 <p>{i}</p>
@@ -44,7 +46,7 @@ function game (data) {
                                         <h4>{p.name}</h4>
                                         {p.images.map(i => {
                                         return(
-                                            <img src={i} alt={p.name} style={{width: '100%', height: '100%'}}></img>
+                                            <img src={i} alt={p.name}></img>
                                             )
                                         })}
                                     </div>
@@ -72,12 +74,9 @@ function game (data) {
                                 <p>{i}</p>
                             )
                         })}
-                    </div>
-                    
-                    
-                    
+                    </div>  
                 </div>
-            </div>
+            </>
         )
     }
     return(

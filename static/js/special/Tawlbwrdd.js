@@ -1,5 +1,5 @@
 let pawn = new PieceInfo('Pawn',['/images/Pawn.png'], 0, [new Move([new Vector2(0,1)], 'MoveOnly', false, true, false),new Move([new Vector2(1,0)], 'MoveOnly', false, true, false), new Move([new Vector2(0,-1)], 'MoveOnly', false, true, false),new Move([new Vector2(-1,0)], 'MoveOnly', false, true, false)])
-let branán = new PieceInfo('Branán',['/images/Branán.png'], 0, [new Move([new Vector2(0,1)], 'MoveOnly', false, true, false),new Move([new Vector2(1,0)], 'MoveOnly', false, true, false), new Move([new Vector2(0,-1)], 'MoveOnly', false, true, false),new Move([new Vector2(-1,0)], 'MoveOnly', false, true, false)])
+let king = new PieceInfo('King',['/images/King.png'], 0, [new Move([new Vector2(0,1)], 'MoveOnly', false, true, false),new Move([new Vector2(1,0)], 'MoveOnly', false, true, false), new Move([new Vector2(0,-1)], 'MoveOnly', false, true, false),new Move([new Vector2(-1,0)], 'MoveOnly', false, true, false)])
 
 let board
 let whitePieces =Array()
@@ -13,7 +13,7 @@ let playerOneText = document.getElementById('PlayerOneText')
 let playerTwoText = document.getElementById('PlayerTwoText')
 
 function Main(){
-    board = CreateBoard(7,7)
+    board = CreateBoard(11,11)
     board[Math.trunc(board.length/2)][Math.trunc(board.length/2)].color = 'Red'
     board[Math.trunc(board.length/2)][Math.trunc(board.length/2)].element.style.backgroundColor = 'Red'
     Setup()
@@ -29,20 +29,46 @@ function SetupPieces(){
     blackPieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)][Math.trunc(board[0].length/2)+1], document.createElement('img')))
     blackPieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)-1][Math.trunc(board[0].length/2)], document.createElement('img')))
     blackPieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)][Math.trunc(board[0].length/2)-1], document.createElement('img')))
-    blackPieces.push(CreatePiece(branán, 0, board[Math.trunc(board.length/2)][Math.trunc(board[0].length/2)], document.createElement('img')))
+
+    blackPieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)+1][Math.trunc(board[0].length/2)+1], document.createElement('img')))
+    blackPieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)-1][Math.trunc(board[0].length/2)+1], document.createElement('img')))
+    blackPieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)+1][Math.trunc(board[0].length/2)-1], document.createElement('img')))
+    blackPieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)-1][Math.trunc(board[0].length/2)-1], document.createElement('img')))
+
+    blackPieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)+2][Math.trunc(board[0].length/2)], document.createElement('img')))
+    blackPieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)][Math.trunc(board[0].length/2)+2], document.createElement('img')))
+    blackPieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)-2][Math.trunc(board[0].length/2)], document.createElement('img')))
+    blackPieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)][Math.trunc(board[0].length/2)-2], document.createElement('img')))
+    blackPieces.push(CreatePiece(king, 0, board[Math.trunc(board.length/2)][Math.trunc(board[0].length/2)], document.createElement('img')))
     
-    //Attacker Pieces
+    //Attack Pieces
+    whitePieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)-1][0], document.createElement('img')))
+    whitePieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)+1][0], document.createElement('img')))
     whitePieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)][0], document.createElement('img')))
-    whitePieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)][1], document.createElement('img')))
+    whitePieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)-1][1], document.createElement('img')))
+    whitePieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)+1][1], document.createElement('img')))
+    whitePieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)][2], document.createElement('img')))
 
+    whitePieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)-1][board[0].length-1], document.createElement('img')))
+    whitePieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)+1][board[0].length-1], document.createElement('img')))
     whitePieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)][board[0].length-1], document.createElement('img')))
-    whitePieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)][board[0].length-2], document.createElement('img')))
+    whitePieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)-1][board[0].length-2], document.createElement('img')))
+    whitePieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)+1][board[0].length-2], document.createElement('img')))
+    whitePieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)][board[0].length-3], document.createElement('img')))
 
+    whitePieces.push(CreatePiece(pawn, 0, board[0][Math.trunc(board.length/2)-1], document.createElement('img')))
+    whitePieces.push(CreatePiece(pawn, 0, board[0][Math.trunc(board.length/2)+1], document.createElement('img')))
     whitePieces.push(CreatePiece(pawn, 0, board[0][Math.trunc(board.length/2)], document.createElement('img')))
-    whitePieces.push(CreatePiece(pawn, 0, board[1][Math.trunc(board.length/2)], document.createElement('img')))
+    whitePieces.push(CreatePiece(pawn, 0, board[1][Math.trunc(board.length/2)-1], document.createElement('img')))
+    whitePieces.push(CreatePiece(pawn, 0, board[1][Math.trunc(board.length/2)+1], document.createElement('img')))
+    whitePieces.push(CreatePiece(pawn, 0, board[2][Math.trunc(board.length/2)], document.createElement('img')))
 
+    whitePieces.push(CreatePiece(pawn, 0, board[board[0].length-1][Math.trunc(board.length/2)-1], document.createElement('img')))
+    whitePieces.push(CreatePiece(pawn, 0, board[board[0].length-1][Math.trunc(board.length/2)+1], document.createElement('img')))
     whitePieces.push(CreatePiece(pawn, 0, board[board[0].length-1][Math.trunc(board.length/2)], document.createElement('img')))
-    whitePieces.push(CreatePiece(pawn, 0, board[board[0].length-2][Math.trunc(board.length/2)], document.createElement('img')))
+    whitePieces.push(CreatePiece(pawn, 0, board[board[0].length-2][Math.trunc(board.length/2)-1], document.createElement('img')))
+    whitePieces.push(CreatePiece(pawn, 0, board[board[0].length-2][Math.trunc(board.length/2)+1], document.createElement('img')))
+    whitePieces.push(CreatePiece(pawn, 0, board[board[0].length-3][Math.trunc(board.length/2)], document.createElement('img')))
 
     blackPieces.forEach(piece => {
         piece.element.style.filter = "brightness(60%)"
@@ -52,7 +78,7 @@ function SetupPieces(){
 
 function CheckForCapture(piece, tile){
 
-    if(piece.info == branán && (IsInsideBoard(new Vector2(tile.pos.x+1,tile.pos.y+1)) == false || IsInsideBoard(new Vector2(tile.pos.x-1,tile.pos.y-1)) == false)){
+    if(piece.info == king && (IsInsideBoard(new Vector2(tile.pos.x+1,tile.pos.y+1)) == false || IsInsideBoard(new Vector2(tile.pos.x-1,tile.pos.y-1)) == false)){
         Win()
     }
 
@@ -64,7 +90,7 @@ function CheckForCapture(piece, tile){
                 }
             }
         }
-        else if(board[tile.pos.x][tile.pos.y+1].piece.info == branán){ 
+        else if(board[tile.pos.x][tile.pos.y+1].piece.info == king){ 
             if(board[tile.pos.x][tile.pos.y+1].color != 'Red'){
                 if((IsInsideBoard(new Vector2(tile.pos.x, tile.pos.y+2)) == false || board[tile.pos.x][tile.pos.y+2].color != 'Red')
                     &&(IsInsideBoard(new Vector2(tile.pos.x-1, tile.pos.y+1)) == false || board[tile.pos.x-1][tile.pos.y+1].color != 'Red')
@@ -107,7 +133,7 @@ function CheckForCapture(piece, tile){
                 }
             }
         }
-        else if(board[tile.pos.x+1][tile.pos.y].piece.info == branán){ 
+        else if(board[tile.pos.x+1][tile.pos.y].piece.info == king){ 
             if(board[tile.pos.x+1][tile.pos.y].color != 'Red'){
                 if((IsInsideBoard(new Vector2(tile.pos.x+2, tile.pos.y)) == false || board[tile.pos.x+2][tile.pos.y].color != 'Red')
                     &&(IsInsideBoard(new Vector2(tile.pos.x+1, tile.pos.y-1)) == false || board[tile.pos.x+1][tile.pos.y-1].color != 'Red')
@@ -152,7 +178,7 @@ function CheckForCapture(piece, tile){
                 }
             }
         }
-        else if(board[tile.pos.x][tile.pos.y-1].piece.info == branán){ 
+        else if(board[tile.pos.x][tile.pos.y-1].piece.info == king){ 
             if(board[tile.pos.x][tile.pos.y-1].color != 'Red'){
                 if((IsInsideBoard(new Vector2(tile.pos.x, tile.pos.y-2)) == false || board[tile.pos.x][tile.pos.y-2].color != 'Red')
                     &&(IsInsideBoard(new Vector2(tile.pos.x-1, tile.pos.y-1)) == false || board[tile.pos.x-1][tile.pos.y-1].color != 'Red')
@@ -196,7 +222,7 @@ function CheckForCapture(piece, tile){
                 }
             }
         }
-        else if(board[tile.pos.x-1][tile.pos.y].piece.info == branán){ 
+        else if(board[tile.pos.x-1][tile.pos.y].piece.info == king){ 
             if(board[tile.pos.x-1][tile.pos.y].color != 'Red'){
                 if((IsInsideBoard(new Vector2(tile.pos.x-2, tile.pos.y)) == false || board[tile.pos.x-2][tile.pos.y].color != 'Red')
                     &&(IsInsideBoard(new Vector2(tile.pos.x-1, tile.pos.y-1)) == false || board[tile.pos.x-1][tile.pos.y-1].color != 'Red')
@@ -245,7 +271,7 @@ let CalculatePossibleMoves = (piece, enemyPieces, colorTiles) => {
                 while(invalidMove == false){
                     for(let j = 0; j < piece.info.moves[i].iterators.length; j++){
                         newPos = new Vector2(newPos.x+piece.info.moves[i].iterators[j].x*GetTeamModifier(piece),newPos.y+piece.info.moves[i].iterators[j].y*GetTeamModifier(piece))
-                        if(IsInsideBoard(newPos) &&  board[newPos.x][newPos.y].color != "Red" && invalidMove == false){
+                        if(IsInsideBoard(newPos) && board[newPos.x][newPos.y].color != 'Red' && board[newPos.x][newPos.y].color != 'Red' && invalidMove == false){
                                 if(board[newPos.x][newPos.y].piece != null){
                                     invalidMove = true
                                 }

@@ -24,7 +24,7 @@ let ExclusiveMoveChecks = (piece,tile) => {
 
 
 function SetupPieces(){
-    //White Pieces
+    //Defender Pieces
     blackPieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)+1][Math.trunc(board[0].length/2)], document.createElement('img')))
     blackPieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)][Math.trunc(board[0].length/2)+1], document.createElement('img')))
     blackPieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)-1][Math.trunc(board[0].length/2)], document.createElement('img')))
@@ -37,7 +37,7 @@ function SetupPieces(){
     blackPieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)][Math.trunc(board[0].length/2)-2], document.createElement('img')))
     blackPieces.push(CreatePiece(king, 0, board[Math.trunc(board.length/2)][Math.trunc(board[0].length/2)], document.createElement('img')))
     
-    //Black Pieces
+    //Attacker Pieces
     whitePieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2-1)][0], document.createElement('img')))
     whitePieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2+1)][0], document.createElement('img')))
     whitePieces.push(CreatePiece(pawn, 0, board[Math.trunc(board.length/2)][0], document.createElement('img')))
@@ -259,7 +259,7 @@ let CalculatePossibleMoves = (piece, enemyPieces, colorTiles) => {
                 while(invalidMove == false){
                     for(let j = 0; j < piece.info.moves[i].iterators.length; j++){
                         newPos = new Vector2(newPos.x+piece.info.moves[i].iterators[j].x*GetTeamModifier(piece),newPos.y+piece.info.moves[i].iterators[j].y*GetTeamModifier(piece))
-                        if(IsInsideBoard(newPos)  && invalidMove == false){
+                        if(IsInsideBoard(newPos) && board[newPos.x][newPos.y].color != 'Red' && invalidMove == false){
                                 if(board[newPos.x][newPos.y].piece != null){
                                     invalidMove = true
                                 }

@@ -2,8 +2,27 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
+body{
+    margin: 0;
+    
+}
 
-#WebsiteInformation{
+img{
+    image-rendering: pixelated;
+}
+
+
+button{
+    border-radius: 0;
+    border-width: 3px;
+}
+button:hover {
+    background-color: #DDDDDD;
+  }
+
+
+#Header{
+
     padding-top: 5px;
     padding-bottom: 20px;
     color: white;
@@ -11,9 +30,11 @@
     margin-bottom: 20px;
 }
 
-#WebsiteInformation>*{
+#Header>*{
     margin-left: 20px;
 }
+
+
 #Chunk{
     width: 90%;
     margin-left: auto;
@@ -35,7 +56,7 @@
 
 #SubChunk{
     margin-left: 50px;
-    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 #GameButtons {
@@ -46,6 +67,7 @@
 }
 
 #GameButtons > * {
+    margin-bottom: 5px;
     display: block;
 }
 
@@ -63,24 +85,29 @@
     font-size: .90em;
 }
 
+
 #PlayerOneText, #PlayerTwoText{
     color: white;
     background-color: brown;
     text-align: center;
     width: 180px;
     height: 50px;
-    margin: auto;
+    margin-left: auto; 
+    margin-right: auto; 
     margin-top: 30px;
     padding-top: 7px;
     border-style: solid;
     border-width: 6px;
 }
 
+
 #Board{
     background-color: brown;
     height: 500px;
     width: 500px;
-    margin: 30px auto;
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-top: 20px;
 }
 
 #WinPopup{
@@ -102,16 +129,20 @@
 }
 
 #WinPopup h1{
+
+    margin: 0 auto;
     margin-bottom: 15px;
     color: white;
 }
 
 #WinPopup button{
+    margin: 0 auto;
     margin-bottom: 15px;
 }
 
 #Guide{
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -129,7 +160,7 @@
     color: white;
 }
 
-#Gameplay{
+#Instructions{
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -153,10 +184,4 @@
     margin-left: 10px;
 }
 
-img{
-    image-rendering: pixelated;
-}
 
-body{
-    margin: 0;
-}

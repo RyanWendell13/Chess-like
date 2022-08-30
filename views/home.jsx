@@ -14,7 +14,7 @@ let buttons = (games, categories) =>{
                                         <h3>{games[i].name}</h3>
                                         <p>{games[i].subtitle}</p>
                                         <a href={`/game/${games[i].index}`}>
-                                            <button>Play</button>
+                                            <button>{`Play ${games[i].name}`}</button>
                                         </a>
                                     </div>
                                 )
@@ -32,7 +32,7 @@ let buttons = (games, categories) =>{
                                             <h3>{games[i].name}</h3>
                                             <p>{games[i].subtitle}</p>
                                             <a href={`/game/${games[i].index}`}>
-                                                <button>Play</button>
+                                                <button>{`Play ${games[i].name}`}</button>
                                             </a>
                                         </div>
                                     )
@@ -50,10 +50,13 @@ function home (data) {
     return (
         <Def>
             <main>
-                <div id='WebsiteInformation'>
-                    <h1>Chess-Like Games</h1>
-                    <p>Welcome, here are a couple of games that are like Chess, including Chess.</p>
+                <div id='Header'>
+                    <div id='WebsiteInfo'>
+                        <h1>Chess-Like Games</h1>
+                        <p>Welcome, here are a couple of games that are like Chess, including Chess.</p>
+                    </div>
                 </div>
+                
                 {buttons(data.games,data.categories)}
             </main>
         </Def>
