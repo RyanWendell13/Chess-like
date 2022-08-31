@@ -5,17 +5,20 @@
   "main": "index.js",
   "engines": {
     "node": "18.6.0",
-    "npm": "8.13.2"
+    "npm": "8.18.0"
   },
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.2",
     "express": "^4.18.1",
-    "express-react-views": "^0.11.0",
-    "react": "^18.2.0"
+    "react": "^18.2.0",
+    "express-react-views": "^0.11.0"
+    
   }
 }

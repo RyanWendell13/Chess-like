@@ -1,4 +1,5 @@
 
+require ('dotenv').config()
 const express = require('express')
 const games = require('./models/games').games
 const categories = require('./models/categories').categories
@@ -15,4 +16,4 @@ app.get('/', function (req, res){
     res.render('home', {games, categories})
 })
 
-app.listen(3000)
+app.listen(process.env.PORT)
