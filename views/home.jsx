@@ -13,9 +13,7 @@ let buttons = (games, categories) =>{
                                     <div id = 'Chunk'>
                                         <h3>{games[i].name}</h3>
                                         <p>{games[i].subtitle}</p>
-                                        <a href={`/game/${games[i].index}`}>
-                                            <button>Play</button>
-                                        </a>
+                                        <button onclick={`window.location.href='/game/${games[i].index}';`}>Play</button>
                                     </div>
                                 )
                             })
@@ -31,9 +29,7 @@ let buttons = (games, categories) =>{
                                         <div id='SubChunk'>
                                             <h3>{games[i].name}</h3>
                                             <p>{games[i].subtitle}</p>
-                                            <a href={`/game/${games[i].index}`}>
-                                                <button>Play</button>
-                                            </a>
+                                            <button onclick={`window.location.href='/game/${games[i].index}';`}>Play</button>
                                         </div>
                                     )
                                 })}

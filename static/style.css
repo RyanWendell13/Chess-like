@@ -1,6 +1,5 @@
 *{
     font-family: 'Times New Roman', Times, serif;
-    -webkit-appearance: none;
 }
 
 body{
@@ -10,10 +9,6 @@ body{
 
 img{
     image-rendering: pixelated;
-}
-
-a{
-    color: black;
 }
 
 button{

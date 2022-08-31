@@ -6,9 +6,8 @@ function game (data) {
         return(
             <>
                 <div  id='GameButtons'>
-                        <a href='/'>
-                            <button id='Back'>back</button>
-                        </a>
+                        <button id='Back' onclick={`window.location.href='/';`}>Back</button>
+
                         <button id="Restart" onclick="NewGame()">
                             <img src="/images/ReloadIcon.png" alt="Restart Button"/>
                         </button>
