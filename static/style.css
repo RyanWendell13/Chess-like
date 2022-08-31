@@ -12,6 +12,9 @@ img{
     image-rendering: pixelated;
 }
 
+a{
+    color: black;
+}
 
 button{
     border-radius: 0;
