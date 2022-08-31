@@ -14,7 +14,7 @@ let buttons = (games, categories) =>{
                                         <h3>{games[i].name}</h3>
                                         <p>{games[i].subtitle}</p>
                                         <a href={`/game/${games[i].index}`}>
-                                            <button>{`Play ${games[i].name}`}</button>
+                                            <button>Play</button>
                                         </a>
                                     </div>
                                 )
@@ -32,7 +32,7 @@ let buttons = (games, categories) =>{
                                             <h3>{games[i].name}</h3>
                                             <p>{games[i].subtitle}</p>
                                             <a href={`/game/${games[i].index}`}>
-                                                <button>{`Play ${games[i].name}`}</button>
+                                                <button>Play</button>
                                             </a>
                                         </div>
                                     )

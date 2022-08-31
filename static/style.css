@@ -15,10 +15,21 @@ img{
 button{
     border-radius: 0;
     border-width: 3px;
+    width: 80px;
+    height: 35px;
+    font-size: large;
+    border-style: outset;
+    border-color: #777;
+    letter-spacing: .3em;
 }
 button:hover {
-    background-color: #DDDDDD;
+    background-color: #AAA;
+    border-color: #666;
   }
+button:active{
+    border-style: inset;
+    background-color: #555;
+}
 
 
 #Header{
@@ -71,11 +82,11 @@ button:hover {
     display: block;
 }
 
-#Back{
-    width: 47px;
+#Back, #Restart{
+    width: 70px;
 }
 #Restart>img{
-    width: 100%;
+    width: 50%;
     height: 100%;
 }
 
@@ -184,5 +195,4 @@ button:hover {
 #TileImages{
     margin-left: 10px;
 }
-
 
