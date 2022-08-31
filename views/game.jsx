@@ -7,7 +7,7 @@ function game (data) {
             <>
                 <div  id='GameButtons'>
                         <a href='/'>
-                            <button id='Back'>back</button>
+                            <button id='Back'>Back</button>
                         </a>
                         <button id="Restart" onclick="NewGame()">
                             <img src="/images/ReloadIcon.png" alt="Restart Button"/>
