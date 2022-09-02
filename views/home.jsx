@@ -56,7 +56,6 @@ function home (data) {
                         <p>Welcome, here are a couple of games that are like Chess, including Chess.</p>
                     </div>
                 </div>
-                
                 {buttons(data.games,data.categories)}
             </main>
         </Def>
