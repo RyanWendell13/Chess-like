@@ -3,7 +3,7 @@ const games = require('../models/games').games
 const db = require('../models')
 
 router.get('/:id', (req, res) => {
-    db.games.findById(req.params.id)
+    db.Game.findById(req.params.id)
     .then(game => {
         res.render('game', game)
     })
