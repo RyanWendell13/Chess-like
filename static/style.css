@@ -83,14 +83,10 @@ button:active{
     display: block;
 }
 
-#Restart{
+#Restart, #Back{
     width: 70px;
     height: 40px;
-}
-
-#Back{
-    width: auto;
-    height: 40px;
+    padding: 0;
 }
 
 #Game > p{
