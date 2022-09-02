@@ -13,6 +13,8 @@ img{
 }
 
 button{
+
+    padding: 0;
     color: black;
     border-radius: 0;
     border-width: 3px;
@@ -86,7 +88,6 @@ button:active{
 #Restart, #Back{
     width: 70px;
     height: 40px;
-    padding: 0;
 }
 
 #Game > p{
