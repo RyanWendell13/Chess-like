@@ -1,8 +1,7 @@
 
 require ('dotenv').config()
 const express = require('express')
-const games = require('./models/games').games
-const categories = require('./models/categories').categories
+const db = require('./models')
 
 const app = express()
 app.set('view engine', 'jsx')
@@ -12,8 +11,13 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/game', require('./controllers/game'))
 
 app.get('/', function (req, res){
-
-    res.render('home', {games, categories})
+    db.Category.find()
+    .populate('games')
+    .then((categories) => {
+        res.render('home', {categories})
+    }).catch(err => {
+        console.log(err)
+    })
 })
 
 app.listen(process.env.PORT)
