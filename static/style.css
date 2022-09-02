@@ -83,16 +83,15 @@ button:active{
     display: block;
 }
 
-#Back, #Restart{
-    text-align: center;
+#Restart{
     width: 70px;
     height: 40px;
 }
 
-#Back > *{
-    text-align: center;
+#Back{
+    width: auto;
+    height: 40px;
 }
-
 
 #Game > p{
     margin-top: 0px;
