@@ -22,17 +22,17 @@ button{
     border-style: outset;
     border-color: #777;
     letter-spacing: .3em;
-    text-align: center;
+}
+button>*{
+    margin: 0, auto;
 }
 button:hover {
     background-color: #BBB;
     border-color: #666;
-    text-align: center;
   }
 button:active{
     border-style: inset;
     background-color: #555;
-    text-align: center;
 }
 
 
