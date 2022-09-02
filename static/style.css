@@ -198,3 +198,7 @@ button:active{
 #TileImages{
     margin-left: 10px;
 }
+
+#Piece{
+    transform: scale(1.25);
+}

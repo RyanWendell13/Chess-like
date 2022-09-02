@@ -12,8 +12,10 @@ let CreatePiece = (type, imageIndex, boardPos, element) => {
     let newPiece = new Piece(type, boardPos, element)
     newPiece.element.src = newPiece.info.image[imageIndex]
     newPiece.element.alt= newPiece.info.name
+    newPiece.element.id = 'Piece'
     newPiece.element.style.position = 'absolute'
-    newPiece.element.style.bottom = type.yOffset +'px'
+    newPiece.element.style.left = 5 +'px'
+    newPiece.element.style.bottom = type.yOffset+15 +'px'
     newPiece.element.style.zIndex = 10+boardPos.pos.y
     newPiece.element.addEventListener('onClick',event => Clicked(event.target))
     boardPos.element.appendChild(newPiece.element)
