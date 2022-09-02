@@ -21,10 +21,7 @@ button{
     font-size: large;
     border-style: outset;
     border-color: #777;
-    letter-spacing: .3em;
-}
-button>*{
-    margin: 0, auto;
+    letter-spacing: .2em;
 }
 button:hover {
     background-color: #BBB;
