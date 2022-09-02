@@ -1,12 +1,13 @@
 *{
     font-family: 'Times New Roman', Times, serif;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    
 }
 
 body{
     margin: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     
 }
 
@@ -197,8 +198,4 @@ button:active{
 
 #TileImages{
     margin-left: 10px;
-}
-
-#Piece{
-    transform: scale(1.25);
 }

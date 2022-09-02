@@ -1,8 +1,8 @@
 
 let CreateBoard = (x,y) => {
     background = document.getElementById('Board')
-    background.style.width = (100+x*53.125)+'px'
-    background.style.height = (100+y*53.125)+'px'
+    background.style.width = (100+x*42.5)+'px'
+    background.style.height = (100+y*42.5)+'px'
     tempBoard = Array(x).fill().map(()=>Array(y))
     let isWhite = true;
     for(let i = 0; i < x; i++){
@@ -18,12 +18,12 @@ let CreateBoard = (x,y) => {
             }
             newTile.element.addEventListener('click',event => (Clicked(event.target)))
             newTile.element.style.backgroundColor = newTile.color
-            newTile.element.style.width = '53.125px'
-            newTile.element.style.height = '53.125px'
+            newTile.element.style.width = '42.5px'
+            newTile.element.style.height = '42.5px'
             document.getElementById('Board').appendChild(newTile.element)
             newTile.element.style.position = 'absolute'
-            newTile.element.style.marginLeft = 100/2+(i*53.125)+'px'
-            newTile.element.style.marginTop = 100/2+(j*53.125)+'px'
+            newTile.element.style.marginLeft = 100/2+(i*42.5)+'px'
+            newTile.element.style.marginTop = 100/2+(j*42.5)+'px'
             tempBoard[i][j] = newTile
         }
         if (tempBoard.length % 2 == 0){
