@@ -27,10 +27,12 @@ button{
 button:hover {
     background-color: #BBB;
     border-color: #666;
+    text-align: center;
   }
 button:active{
     border-style: inset;
     background-color: #555;
+    text-align: center;
 }
 
 
