@@ -13,7 +13,9 @@ img{
 }
 
 button{
-
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     padding: 0;
     color: black;
     border-radius: 0;
