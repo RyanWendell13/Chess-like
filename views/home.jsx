@@ -60,15 +60,14 @@ function home (data) {
             </head>
             <body>
                 <main>
-                    <div id='Header'>
+                    <header>
                         <div id='WebsiteInfo'>
                             <h1>Chess-Like Games</h1>
                             <p>Welcome, here are a couple of games that are like Chess, including Chess.</p>
                         </div>
-                    </div>
+                    </header>
                     {buttons(data)}
                 </main>
-
             </body>
         </html>
     )

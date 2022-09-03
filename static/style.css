@@ -37,7 +37,7 @@ button:active{
 }
 
 
-#Header{
+header{
 
     padding-top: 5px;
     padding-bottom: 20px;
@@ -46,7 +46,7 @@ button:active{
     margin-bottom: 20px;
 }
 
-#Header>*{
+header>*{
     margin-left: 20px;
 }
 
