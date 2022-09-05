@@ -142,8 +142,8 @@ header>*{
 }
 
 #WinPopup h1{
-
     margin: 0 auto;
+    margin-top:10px;
     margin-bottom: 15px;
     color: white;
 }
@@ -151,6 +151,8 @@ header>*{
 #WinPopup button{
     margin: 0 auto;
     margin-bottom: 15px;
+    width: 125px;
+    height: 50px;
 }
 
 #Guide{

@@ -18,7 +18,9 @@ function Main(){
 }
 let ExclusiveMoveChecks = (piece,tile) => {
     CheckForCapture(piece,tile)
+    CheckPawns()
 }
+
 
 function SetupPieces(){
     //White Pieces
@@ -37,6 +39,29 @@ function SetupPieces(){
     blackPieces.forEach(piece => {
         piece.element.style.filter = "brightness(60%)"
     })
+}
+
+function CheckPawns(){
+    let victory = true
+    if (whiteTurn == true){
+        blackPieces.map(p => {
+            if(p.info.name == pawn.name){
+                victory = false
+            }
+        })
+    }
+    else{
+        whitePieces.map(p => {
+            if(p.info.name == pawn.name){
+                victory = false
+            }
+        })
+    }
+    
+    
+    if (victory == true){
+        Win()
+    }
 }
 
 

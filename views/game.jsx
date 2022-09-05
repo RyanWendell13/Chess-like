@@ -14,7 +14,7 @@ function game (data) {
                         </button>
                 </div>
                     
-                <div>
+                <main>
                     <h1 id="PlayerTwoText">Player Two</h1>
 
                     <div id="Board">
@@ -24,7 +24,7 @@ function game (data) {
                         </div>
                     </div>
                     <h1 id="PlayerOneText">Player One</h1>
-                </div>
+                </main>
                     
 
 
