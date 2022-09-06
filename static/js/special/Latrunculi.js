@@ -18,6 +18,7 @@ function Main(){
 }
 let ExclusiveMoveChecks = (piece,tile) => {
     CheckForCapture(piece,tile)
+    CheckForCornerCapture(piece,tile)
     CheckPawns()
 }
 
@@ -65,8 +66,49 @@ function CheckPawns(){
 }
 
 
+function CheckForCornerCapture(piece, tile){
+    if(currentTeamPieces.includes(board[0][1].piece) == true && currentTeamPieces.includes(board[1][0].piece) == true && currentEnemyPieces.includes(board[0][0].piece) == true){
+        console.log('1')
+        if(board[0][0].piece.info == pawn){
+            DeletePiece(board[0][0].piece)
+        }
+        else if(board[0][0].piece.info == dux){
+            Win()
+        }
+    }
+    
+    if(currentTeamPieces.includes(board[0][board[0].length-2].piece) == true && currentTeamPieces.includes(board[1][board[0].length-1].piece) == true  && currentEnemyPieces.includes(board[0][board[0].length-1].piece) == true){
+        console.log('2')
+        if(board[0][board[0].length-1].piece.info == pawn){
+            DeletePiece(board[0][board[0].length-1].piece)
+        }
+        else if(board[0][board[0].length-1].piece.info == dux){
+            Win()
+        }
+    }
+
+    if(currentTeamPieces.includes(board[board.length-1][1].piece) == true && currentTeamPieces.includes(board[board.length-2][0].piece) == true && currentEnemyPieces.includes(board[board.length-1][0].piece) == true){
+        console.log('3')
+        if(board[board.length-1][0].piece.info == pawn){
+            DeletePiece(board[board.length-1][0].piece)
+        }
+        else if(board[board.length-1][0].piece.info == dux){
+            Win()
+        }
+    }
+
+    if(currentTeamPieces.includes(board[board.length-2][board[0].length-1].piece) == true && currentTeamPieces.includes(board[board.length-1][board[0].length-2].piece) == true && currentEnemyPieces.includes(board[board.length-1][board[0].length-1].piece) == true){
+        console.log('4')
+        if(board[board.length-1][board[0].length-1].piece.info == pawn){
+            DeletePiece(board[board.length-1][board[0].length-1].piece)
+        }
+        else if(board[board.length-1][board[0].length-1].piece.info == dux){
+            Win()
+        }
+    }
+}
+
 function CheckForCapture(piece, tile){
-    console.log('running')
     if(IsInsideBoard(new Vector2(tile.pos.x, tile.pos.y+1)) && currentEnemyPieces.includes(board[tile.pos.x][tile.pos.y+1].piece) == true){
         if(board[tile.pos.x][tile.pos.y+1].piece.info == pawn){
 
