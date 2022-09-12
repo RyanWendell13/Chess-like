@@ -1,5 +1,4 @@
 const router = require('express').Router()
-const games = require('../models/games').games
 const db = require('../models')
 
 router.get('/:name', (req, res) => {

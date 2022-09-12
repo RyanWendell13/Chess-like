@@ -8,7 +8,7 @@ app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
 app.use(express.static('static'))
 app.use(express.urlencoded({ extended: true }))
-app.use('/game', require('./controllers/game'))
+app.use('/games', require('./controllers/games'))
 
 app.get('/', function (req, res){
     db.Category.find()

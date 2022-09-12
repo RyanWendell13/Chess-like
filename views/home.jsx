@@ -12,7 +12,7 @@ let buttons = (data) =>{
                                     <div id = 'Chunk'>
                                         <h3>{g.name}</h3>
                                         <p>{g.subtitle}</p>
-                                        <a href={`/game/${g.name}`}>
+                                        <a href={`/games/${g.name}`}>
                                             <button>Play</button>
                                         </a>
                                     </div>
@@ -30,7 +30,7 @@ let buttons = (data) =>{
                                         <div id='SubChunk'>
                                             <h3>{g.name}</h3>
                                             <p>{g.subtitle}</p>
-                                            <a href={`/game/${g.name}`}>
+                                            <a href={`/games/${g.name}`}>
                                                 <button>Play</button>
                                             </a>
                                         </div>
