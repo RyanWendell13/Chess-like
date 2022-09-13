@@ -11,6 +11,9 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/games', require('./controllers/games'))
 
 app.get('/', function (req, res){
+    res.render('temphome')
+})
+app.get('/home', function (req, res){
     db.Category.find()
     .populate('games')
     .then((categories) => {

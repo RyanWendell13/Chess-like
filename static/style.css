@@ -195,3 +195,22 @@ header>*{
 #TileImages{
     margin-left: 10px;
 }
+
+
+#Popup{
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    text-align: center;
+    width: 100vw;
+    height: 100vw;
+}
+#Popup > *{
+    margin-top: 100px;
+}
+#Popup > a > button{
+    width: 300px;
+    height: 200px;
+    font-size: x-large;
+}
