@@ -18,21 +18,16 @@ button{
     appearance: none;
     padding: 0;
     color: black;
-    border-radius: 0;
-    border-width: 3px;
     width: 80px;
     height: 35px;
     font-size: large;
-    border-style: outset;
-    border-color: #777;
     letter-spacing: .2em;
+    border: solid black;
 }
 button:hover {
     background-color: #BBB;
-    border-color: #666;
   }
 button:active{
-    border-style: inset;
     background-color: #555;
 }
 
