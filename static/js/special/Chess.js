@@ -23,7 +23,7 @@ function Main(){
     Setup()
     
 }
-let ExclusiveMoveChecks = (piece,tile) => {
+function ExclusiveMoveChecks (piece,tile) {
     PawnCheck(piece, tile)
 
 
@@ -35,7 +35,7 @@ let ExclusiveMoveChecks = (piece,tile) => {
     }
 }
 
-let PawnCheck = (piece, tile) => {
+function PawnCheck(piece, tile) {
     if (piece.info == pawn){
         if(whiteTurn == true && tile.pos.y == 0){
             piece.info = queen
@@ -204,15 +204,19 @@ function CanMoveTakeCheckingPiece(checkingPiece, attackPiece, futureTile, moveIn
     return false
 }
 
+
+
+
 //used to check apporpriate movement with checks
-function CheckForCheck(piece, pieceTeam, currentTile, futureTile){
+function CheckForCheck (piece, pieceTeam, currentTile, futureTile) {
     for(let j = 0; j < piece.info.moves.length; j++){
         let newPos = piece.tile.pos
         if(piece.info.moves[j].firstMove == false || piece.moved == false){
             if(piece.info.moves[j].isRepeating == true){
                 let invalidMove = false
                 while (invalidMove == false){
-                    for(let k = 0; k < piece.info.moves[j].iterators.length; k++){
+                    //change j to k and i to j
+                    for(let j = 0; j < piece.info.moves[i].iterators.length; j++){
                         newPos = new Vector2(newPos.x+piece.info.moves[j].iterators[k].x*GetTeamModifier(piece),newPos.y+piece.info.moves[j].iterators[k].y*GetTeamModifier(piece))
                         if(IsInsideBoard(newPos) == true && invalidMove == false){
                             if((board[newPos.x][newPos.y].piece != null && board[newPos.x][newPos.y] != currentTile)){
@@ -278,8 +282,45 @@ function CheckForCheck(piece, pieceTeam, currentTile, futureTile){
     return [false, 0]
 }
 
+//called from CalculatePossibleMoves
+function CheckMove (i, tempMoves, newPos, piece, enemyPieces, colorTiles) {
+    let invalidMove = false
+    for(let j = 0; j < piece.info.moves[i].iterators.length; j++){
+        newPos = new Vector2(newPos.x+piece.info.moves[i].iterators[j].x*GetTeamModifier(piece),newPos.y+piece.info.moves[i].iterators[j].y*GetTeamModifier(piece))
+        if(IsInsideBoard(newPos) && invalidMove == false){
+            if(CheckForPossibleCheck(enemyPieces,piece.tile,board[newPos.x][newPos.y],i) == false){
+                if(board[newPos.x][newPos.y].piece != null){
+                    if((enemyPieces.includes(board[newPos.x][newPos.y].piece) == false)){
+                        invalidMove = true
+                    }
+                    else if(piece.info.moves[i].type == 'Standard'||piece.info.moves[i].type == 'AttackOnly'){
+                        if(colorTiles == true){
+                            board[newPos.x][newPos.y].element.style.backgroundColor = 'red'
+                        }
+                        tempMoves.push(board[newPos.x][newPos.y])
+                        invalidMove = true
+                    }
+                }
+                else if (board[newPos.x][newPos.y].piece == null){
+                    if(piece.info.moves[i].type == 'Standard'|| piece.info.moves[i].type == 'MoveOnly'){
+                        if(colorTiles == true){
+                            board[newPos.x][newPos.y].element.style.backgroundColor = 'yellow'
+                        }
+                        tempMoves.push(board[newPos.x][newPos.y])
+                    }  
+                }
+            }
+        }
+        else{
+            invalidMove = true
+        }
+    }
+    return [newPos,invalidMove]
+}
+
 //finds and dispalys all possible moves for a piece
-let CalculatePossibleMoves = (piece, enemyPieces, colorTiles) => {
+function CalculatePossibleMoves (piece, enemyPieces, colorTiles) {
+    
     let tempMoves = Array()
     for(let i = 0; i < piece.info.moves.length; i++){
         let newPos = piece.tile.pos
@@ -287,74 +328,17 @@ let CalculatePossibleMoves = (piece, enemyPieces, colorTiles) => {
             if(piece.info.moves[i].isRepeating == true){
                 //repeating
                 let invalidMove = false
-                while(invalidMove == false){
-                    for(let j = 0; j < piece.info.moves[i].iterators.length; j++){
-                        newPos = new Vector2(newPos.x+piece.info.moves[i].iterators[j].x*GetTeamModifier(piece),newPos.y+piece.info.moves[i].iterators[j].y*GetTeamModifier(piece))
-                        if(IsInsideBoard(newPos) && invalidMove == false){
-                            if(CheckForPossibleCheck(enemyPieces,piece.tile,board[newPos.x][newPos.y],i) == false){
-                                if(board[newPos.x][newPos.y].piece != null){
-                                    if((enemyPieces.includes(board[newPos.x][newPos.y].piece) == false)){
-                                        invalidMove = true
-                                    }
-                                    else if(piece.info.moves[i].type == 'Standard'||piece.info.moves[i].type == 'AttackOnly'){
-                                        if(colorTiles == true){
-                                            board[newPos.x][newPos.y].element.style.backgroundColor = 'red'
-                                        }
-                                        tempMoves.push(board[newPos.x][newPos.y])
-                                        invalidMove = true
-                                    }
-                                    
-                                }
-                                else if (board[newPos.x][newPos.y].piece == null){
-                                    if(piece.info.moves[i].type == 'Standard'|| piece.info.moves[i].type == 'MoveOnly'){
-                                        if(colorTiles == true){
-                                            board[newPos.x][newPos.y].element.style.backgroundColor = 'yellow'
-                                        }
-                                        tempMoves.push(board[newPos.x][newPos.y])
-                                    }  
-                                }
-                            }
-                        }
-                        else{
-                            invalidMove = true
-                        }
-                    }
+                while( invalidMove == false){
+                    let info = CheckMove(i,tempMoves, newPos, piece,enemyPieces,colorTiles)
+                    newPos = info[0]
+                    invalidMove = info[1]
                 }
             }
             else{
-                let invalidMove = false
-                //non repeating moves
-                for(let j = 0; j < piece.info.moves[i].iterators.length; j++){
-                    newPos = new Vector2(newPos.x+piece.info.moves[i].iterators[j].x*GetTeamModifier(piece),newPos.y+piece.info.moves[i].iterators[j].y*GetTeamModifier(piece))
-                        if(IsInsideBoard(newPos) && invalidMove == false){
-                            if(CheckForPossibleCheck(enemyPieces,piece.tile,board[newPos.x][newPos.y],i) == false){
-                                if(board[newPos.x][newPos.y].piece != null){
-                                    if((enemyPieces.includes(board[newPos.x][newPos.y].piece) == false)){
-                                        invalidMove = true
-                                    }
-                                    else if(piece.info.moves[i].type == 'Standard'||piece.info.moves[i].type == 'AttackOnly'){
-                                        if(colorTiles == true){
-                                            board[newPos.x][newPos.y].element.style.backgroundColor = 'red'
-                                        }
-                                        tempMoves.push(board[newPos.x][newPos.y])
-                                        invalidMove = true
-                                    }
-                                    
-                                }
-                                else if (board[newPos.x][newPos.y].piece == null){
-                                    if(piece.info.moves[i].type == 'Standard'|| piece.info.moves[i].type == 'MoveOnly'){
-                                        if(colorTiles == true){
-                                            board[newPos.x][newPos.y].element.style.backgroundColor = 'yellow'
-                                        }
-                                        tempMoves.push(board[newPos.x][newPos.y])
-                                    }  
-                                }
-                            }
-                        }
-                        else{
-                            invalidMove = true
-                        }
-                }
+                let info = CheckMove(i,tempMoves, newPos, piece,enemyPieces,colorTiles)
+                console.log(info)
+                console.log(tempMoves)
+                newPos = info[0]
             }
         }
     }
