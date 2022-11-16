@@ -23,4 +23,4 @@ Create a .env file
     PORT = (Port number to run on)
     MONGO_URI = (MongoDB connection string)
 
-Run the command: npm run initialize
+Run the command: npm run initialize. Then run npm start.
