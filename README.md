@@ -19,6 +19,7 @@ https://chess-like.herokuapp.com/
 
 ### How To Run (Locally)
 Create a .env file
+
     PORT = (Port number to run on)
     MONGO_URI = (MongoDB connection string)
 
