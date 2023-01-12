@@ -86,7 +86,7 @@ function CheckForCapture(piece, tile){
         if(board[tile.pos.x][tile.pos.y+1].piece.info == pawn){
             if(IsInsideBoard(new Vector2(tile.pos.x, tile.pos.y+2))){
                 if((currentTeamPieces.includes(board[tile.pos.x][tile.pos.y+2].piece) == true||(board[tile.pos.x][tile.pos.y+2].color == 'Red' && (board[tile.pos.x][tile.pos.y+2].piece == null)))){
-                    DeletePiece(board[tile.pos.x][tile.pos.y+1].piece)
+                    board[tile.pos.x][tile.pos.y+1].piece.DeletePiece()
                 }
             }
         }
@@ -129,7 +129,7 @@ function CheckForCapture(piece, tile){
         if(board[tile.pos.x+1][tile.pos.y].piece.info == pawn){
             if(IsInsideBoard(new Vector2(tile.pos.x+2, tile.pos.y))){
                 if((currentTeamPieces.includes(board[tile.pos.x+2][tile.pos.y].piece) == true||(board[tile.pos.x+2][tile.pos.y].color == 'Red' && board[tile.pos.x+2][tile.pos.y].piece == null))){
-                    DeletePiece(board[tile.pos.x+1][tile.pos.y].piece)
+                    board[tile.pos.x+1][tile.pos.y].piece.DeletePiece()
                 }
             }
         }
@@ -174,7 +174,7 @@ function CheckForCapture(piece, tile){
         if(board[tile.pos.x][tile.pos.y-1].piece.info == pawn){
             if(IsInsideBoard(new Vector2(tile.pos.x, tile.pos.y-2))){
                 if((currentTeamPieces.includes(board[tile.pos.x][tile.pos.y-2].piece) == true||(board[tile.pos.x][tile.pos.y-2].color == 'Red' && board[tile.pos.x][tile.pos.y-2].piece == null))){
-                    DeletePiece(board[tile.pos.x][tile.pos.y-1].piece)
+                    board[tile.pos.x][tile.pos.y-1].piece.DeletePiece()
                 }
             }
         }
@@ -218,7 +218,7 @@ function CheckForCapture(piece, tile){
         if(board[tile.pos.x-1][tile.pos.y].piece.info == pawn){
             if(IsInsideBoard(new Vector2(tile.pos.x-2, tile.pos.y))){
                 if((currentTeamPieces.includes(board[tile.pos.x-2][tile.pos.y].piece) == true||(board[tile.pos.x-2][tile.pos.y].color == 'Red' && board[tile.pos.x-2][tile.pos.y].piece == null))){
-                    DeletePiece(board[tile.pos.x-1][tile.pos.y].piece)
+                    board[tile.pos.x-1][tile.pos.y].piece.DeletePiece()
                 }
             }
         }
@@ -259,64 +259,22 @@ function CheckForCapture(piece, tile){
     }
 }
 
-//finds and dispalys all possible moves for a piece
-let CalculatePossibleMoves = (piece, enemyPieces, colorTiles) => {
-    let tempMoves = Array()
-    for(let i = 0; i < piece.info.moves.length; i++){
-        let newPos = piece.tile.pos
-        if(piece.info.moves[i].firstMove == false || piece.moved == false){
-            if(piece.info.moves[i].isRepeating == true){
-                //repeating
-                let invalidMove = false
-                while(invalidMove == false){
-                    for(let j = 0; j < piece.info.moves[i].iterators.length; j++){
-                        newPos = new Vector2(newPos.x+piece.info.moves[i].iterators[j].x*GetTeamModifier(piece),newPos.y+piece.info.moves[i].iterators[j].y*GetTeamModifier(piece))
-                        if(IsInsideBoard(newPos) && board[newPos.x][newPos.y].color != 'Red' && board[newPos.x][newPos.y].color != 'Red' && invalidMove == false){
-                                if(board[newPos.x][newPos.y].piece != null){
-                                    invalidMove = true
-                                }
-                                else if (board[newPos.x][newPos.y].piece == null){
-                                    if(piece.info.moves[i].type == 'Standard'|| piece.info.moves[i].type == 'MoveOnly'){
-                                        if(colorTiles == true){
-                                            board[newPos.x][newPos.y].element.style.backgroundColor = 'yellow'
-                                        }
-                                        tempMoves.push(board[newPos.x][newPos.y])
-                                    }  
-                                }
-                            
-                        }
-                        else{
-                            invalidMove = true
-                        }
-                    }
-                }
-            }
-            else{
-                let invalidMove = false
-                //non repeating moves
-                for(let j = 0; j < piece.info.moves[i].iterators.length; j++){
-                    newPos = new Vector2(newPos.x+piece.info.moves[i].iterators[j].x*GetTeamModifier(piece),newPos.y+piece.info.moves[i].iterators[j].y*GetTeamModifier(piece))
-                        if(IsInsideBoard(newPos) && invalidMove == false){
-                        if(board[newPos.x][newPos.y].piece != null){
-                            invalidMove = true
-                        }
-                                    
-                        else if (board[newPos.x][newPos.y].piece == null){
-                            if(piece.info.moves[i].type == 'Standard'|| piece.info.moves[i].type == 'MoveOnly'){
-                                if(colorTiles == true){
-                                    board[newPos.x][newPos.y].element.style.backgroundColor = 'yellow'
-                                }
-                                tempMoves.push(board[newPos.x][newPos.y])
-                            }  
-                        }                        
-                    }
-                    else{
-                        invalidMove = true
-                    }
-                }
-            }
+function CheckMove(i,invalidMove,tempMoves,piece,enemyPieces,newPos,colorTiles){
+    if(IsInsideBoard(newPos) &&  board[newPos.x][newPos.y].color != "Red" && invalidMove == false){
+        if(board[newPos.x][newPos.y].piece != null){
+            return true
         }
+        else {
+            board[newPos.x][newPos.y].element.style.backgroundColor = 'yellow'
+            tempMoves.push(board[newPos.x][newPos.y])        
+        }
+    
     }
-    return tempMoves
+    else{
+        return true
+    }
+    return false
 }
+
+
 Main()

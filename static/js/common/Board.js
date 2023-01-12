@@ -1,5 +1,5 @@
 
-let CreateBoard = (x,y) => {
+function CreateBoard (x,y) {
     background = document.getElementById('Board')
     background.style.width = (100+x*42.5)+'px'
     background.style.height = (100+y*42.5)+'px'
@@ -39,7 +39,7 @@ let CreateBoard = (x,y) => {
 }
 
 
-let DeleteBoard = () => {
+function DeleteBoard () {
     for(let i = 0; i < board.length; i++){
         for(let j = 0; j < board[i].length; j++){
             board[i][j].element.parentNode.removeChild(board[i][j].element)
@@ -49,7 +49,7 @@ let DeleteBoard = () => {
 }
 
 
-let ResetBoardColor = () => {
+function ResetBoardColor () {
     for(let i = 0; i < board.length; i++){
         for(let j = 0; j < board[i].length; j++){
             board[i][j].element.style.backgroundColor =  board[i][j].color
@@ -58,7 +58,7 @@ let ResetBoardColor = () => {
 }
 
 
-let IsInsideBoard = (pos) => {
+function IsInsideBoard (pos) {
     if(pos.x < board.length && pos.y < board[0].length && pos.x >= 0 && pos.y >= 0){
         return true
     }

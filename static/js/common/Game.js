@@ -9,7 +9,7 @@ function Setup(){
 
 
 //runs whenever a board element is clicked
-let Clicked = (element) => {
+function Clicked (element) {
     let obj = FindElement(element)
     let clickedTile
     //checks to see if clicked obj is a piece
@@ -24,22 +24,21 @@ let Clicked = (element) => {
             if((whiteTurn == true && blackPieces.includes(clickedTile.piece) == false) || (whiteTurn == false && whitePieces.includes(clickedTile.piece) == false)){
                 DeletePossibleMoves()
                 pieceSelected = clickedTile.piece
-                possibleMoves = CalculatePossibleMoves(pieceSelected, currentEnemyPieces, true)
+                possibleMoves = pieceSelected.CalculatePossibleMoves(currentEnemyPieces, true)
             }
             else if (pieceSelected != null && possibleMoves.includes(clickedTile)){
-                DeletePiece(clickedTile.piece)
-                MovePiece(pieceSelected, clickedTile)
+                pieceSelected.MovePiece(clickedTile)
                 pieceSelected = null
             }
         }
     }
     else if(pieceSelected != null && possibleMoves.includes(clickedTile)){
-            MovePiece(pieceSelected, clickedTile)
+        pieceSelected.MovePiece(clickedTile)
     }
 }
 
 
-let FindElement = (element) => {
+function FindElement (element) {
     for(let i = 0; i < board.length; i++){
         for(let j = 0; j < board[i].length; j++){
             if(board[i][j].element == element){
@@ -61,7 +60,7 @@ let FindElement = (element) => {
 }
 
 //team modifier is needed to flip the movement of opposing pieces
-let GetTeamModifier = (piece) => {
+function GetTeamModifier (piece) {
     let teamModifier = 1
     if(whitePieces.includes(piece) == true){
         teamModifier = -1
@@ -69,12 +68,12 @@ let GetTeamModifier = (piece) => {
     return teamModifier
 }
 
-let DeletePossibleMoves = () => {
+function DeletePossibleMoves () {
     ResetBoardColor()
     possibleMoves.length = 0
 }
 
-let ChangeTurn = () => {
+function ChangeTurn () {
     if(whiteTurn == false){
         whiteTurn = true
         playerOneText.style.borderColor = 'black'
@@ -93,7 +92,7 @@ let ChangeTurn = () => {
 
 
 
-let Win = () => {
+function Win () {
     let popup = document.getElementById('WinPopup')
     if(whiteTurn == true){
         document.getElementById('WinText').innerHTML = 'Player One Wins'
@@ -105,15 +104,15 @@ let Win = () => {
 }
 
 
-let NewGame = () => {
+function NewGame () {
     let len =  whitePieces.length
     for(let i = 0; i < len; i++){
-        DeletePiece(whitePieces[0])
+        whitePieces[0].DeletePiece()
         
     }
     len = blackPieces.length
     for(let i = 0; i < len; i++){
-            DeletePiece(blackPieces[0])
+        blackPieces[0].DeletePiece()
     }
     if(whiteTurn == false){
         ChangeTurn()

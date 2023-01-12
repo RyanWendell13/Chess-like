@@ -49,11 +49,11 @@ function home (data) {
     return (
         <html lang='en'>
             <head>
-                <meta charset="UTF-8"/>
+                <meta charSet="UTF-8"/>
                 <meta name="description" content="Chess-like games"/>
                 <meta name="keywords" content="Chess, Chess-like, Latrunculi, Tafl, Tablut, Brandubh, Tawlbwrdd"/>
                 <meta name="author" content="Ryan Wendell"/>
-                <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+                <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
                 <meta name="viewport" content="width=1000"></meta>
                 <title>Chess-like</title>
                 <link rel="stylesheet" href="/style.css"/>

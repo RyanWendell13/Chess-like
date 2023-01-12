@@ -23,7 +23,7 @@ async function seed(){
         tiles: [{name:'Possible Move',color:'Yellow'},{name:'Possible Attack',color:'Red'},{name: 'Part Of The Check Path',color:'Blue'}],
 
         issues: [`The King can take a piece even if it is protected by another piece. For example a Queen puts the King in check with a Bishop able to move to the Queens tile. The King should be Checkmated, but instead the King can take the Queen.`,
-            `The ability to Castling hasn't been added.`,
+            `The ability to Caste hasn't been added.`,
             `The ability to En Passant hasn't been added.`],
 
         script: '/js/special/Chess.js'
@@ -116,11 +116,37 @@ async function seed(){
         script: '/js/special/Tawlbwrdd.js'
 
     })
-    none.games.push(chess.id)
-    none.games.push(latrunculi.id)
+    let compoundChess = await db.Game.create({
+        name: 'Compound Chess',
+        subtitle: 'Chess But With Theft',
+
+        instructions: [
+            `Above and below the board are two boxes saying "Player One" and "Player Two". These show whose turn it is. When a box has a black border around it that means it's that players turn.`,
+            `Simply click on a piece to move. It will highlight all possible moves the piece can make. Click on one of the highlighted tiles to move to it.`,
+            `When a king is in check a blue line from the checking piece to the king will be created.`,
+            `When a piece captures another piece it absorbs the move set of that piece.`],
+
+        pieces: [{name:'Pawn',images:['/images/Pawn.png']},
+            {name:'Rook',images:['/images/Rook.png']},
+            {name:'Knight',images:['/images/Knight.png', '/images/KnightVariation.png']},
+            {name:'Bishop',images:['/images/Bishop.png']},
+            {name:'Queen',images:['/images/Queen.png']},
+            {name:'King',images:['/images/King.png']}],
+
+        tiles: [{name:'Possible Move',color:'Yellow'},{name:'Possible Attack',color:'Red'},{name: 'Part Of The Check Path',color:'Blue'}],
+
+        issues: [`The King can take a piece even if it is protected by another piece. For example a Queen puts the King in check with a Bishop able to move to the Queens tile. The King should be Checkmated, but instead the King can take the Queen.`,
+            `The ability to Castle hasn't been added.`,
+            `The ability to En Passant hasn't been added.`],
+
+        script: '/js/special/CompoundChess.js'
+    })
+    none.games.push(chess)
+    none.games.push(latrunculi)
     tafl.games.push(tablut)
     tafl.games.push(brandubh)
     tafl.games.push(tawlbwrdd)
+    none.games.push(compoundChess)
     await none.save()
     await tafl.save()
     process.exit()

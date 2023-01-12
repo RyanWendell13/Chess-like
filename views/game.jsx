@@ -9,7 +9,7 @@ function game (data) {
                         <a href='/'>
                             <button id='Back'>Back</button>
                         </a>
-                        <button id="Restart" onclick="NewGame()">
+                        <button id="Restart" onClick="NewGame()">
                             <img src="/images/ReloadIcon.png" alt="Restart Button"/>
                         </button>
                 </div>
@@ -20,7 +20,7 @@ function game (data) {
                     <div id="Board">
                         <div id="WinPopup">
                             <h1 id="WinText">Player One Won</h1>
-                            <button id = 'NewGameButton'onclick="NewGame()">New Game</button>
+                            <button id = 'NewGameButton'onClick="NewGame()">New Game</button>
                         </div>
                     </div>
                     <h1 id="PlayerOneText">Player One</h1>
@@ -82,8 +82,8 @@ function game (data) {
     return(
         <html lang='en'>
             <head>
-                <meta charset="UTF-8"/>
-                <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+                <meta charSet="UTF-8"/>
+                <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
                 <meta name="description" content="Chess-like games"/>
                 <meta name="keywords" content="Chess, Chess-like, Latrunculi, Tafl, Tablut, Brandubh, Tawlbwrdd"/>
                 <meta name="author" content="Ryan Wendell"/>
