@@ -1,10 +1,10 @@
 # Chess-like
 A website with a collection of chess-like games.
 
-Assets by: me
+Assets for pieces by: Me
 
 ## Demo
-https://chess-like.herokuapp.com/
+https://chess-like.onrender.com
 
 ## Technology
 ### Frontend
